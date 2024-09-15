@@ -1,0 +1,105 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="4.2">
+    <attributes>
+        <attribute name="name" value="ALHAMDULILLAH"/>
+        <attribute name="authors" value="Asus GK"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2024-09-08 10.54.36 PM"/>
+        <attribute name="created" value="QXN1cyBHSztMQVBUT1AtNE03Mk1NQks7MjAyNC0wOS0wODswMy40MS4xNSBQTTsyODg3"/>
+        <attribute name="edited" value="a2VuYmk7TEFQVE9QLTNKS05SVkM4OzIwMjQtMDktMDk7MDguMzIuMjIgQU07MTsyOTU1"/>
+        <attribute name="edited" value="QXN1cyBHSztMQVBUT1AtNE03Mk1NQks7MjAyNC0wOS0wODsxMC41NC4zNiBQTTs2OzMwMDU="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="HargaTiket, HargaAwal, JumlahPengunjung, UmurA, UmurB, UmurC, diskonA, diskonB, diskonC, TotalDiskon, TotalHarga, TotalPromo" type="Real" array="False" size=""/>
+            <assign variable="HargaTiket" expression="60000"/>
+            <output expression="&quot;masukkan jumlah pengunjung&quot;" newline="True"/>
+            <input variable="JumlahPengunjung"/>
+            <assign variable="TotalHarga" expression="HargaTiket*JumlahPengunjung"/>
+            <if expression="JumlahPengunjung&gt;=3">
+                <then>
+                    <output expression="&quot;Masukkan umurA&quot;" newline="True"/>
+                    <input variable="UmurA"/>
+                    <output expression="&quot;Masukkan umurB&quot;" newline="True"/>
+                    <input variable="UmurB"/>
+                    <output expression="&quot;Masukkan umurC&quot;" newline="True"/>
+                    <input variable="UmurC"/>
+                    <if expression="umurA=umurB or umurB=umurC or umurA=umurC">
+                        <then>
+                            <output expression="&quot;anda tidak dapat diskon &quot;&amp;TotalHarga" newline="True"/>
+                        </then>
+                        <else>
+                            <if expression="umurA &lt;= 18">
+                                <then>
+                                    <assign variable="diskonA" expression="HargaTiket*0.2"/>
+                                </then>
+                                <else>
+                                    <if expression="umurA &gt; 18 and umurA &lt;25">
+                                        <then>
+                                            <assign variable="diskonA" expression="HargaTiket*0.15"/>
+                                        </then>
+                                        <else>
+                                            <if expression="umurA &gt;= 25">
+                                                <then>
+                                                    <assign variable="diskonA" expression="HargaTiket*0.1"/>
+                                                </then>
+                                                <else/>
+                                            </if>
+                                        </else>
+                                    </if>
+                                </else>
+                            </if>
+                            <if expression="umurB&lt;=18">
+                                <then>
+                                    <assign variable="diskonB" expression="HargaTiket*0.2"/>
+                                </then>
+                                <else>
+                                    <if expression="umurB &gt;18 and umurB &lt;25">
+                                        <then>
+                                            <assign variable="diskonB" expression="HargaTiket*0.15"/>
+                                        </then>
+                                        <else>
+                                            <if expression="umurB &gt;=25">
+                                                <then>
+                                                    <assign variable="diskonB" expression="HargaTiket*0.1"/>
+                                                </then>
+                                                <else/>
+                                            </if>
+                                        </else>
+                                    </if>
+                                </else>
+                            </if>
+                            <if expression="umurC&lt;=18">
+                                <then>
+                                    <assign variable="diskonC" expression="HargaTiket*0.2"/>
+                                </then>
+                                <else>
+                                    <if expression="umurC&gt;18 and umurC&lt;25">
+                                        <then>
+                                            <assign variable="diskonC" expression="HargaTiket*0.15"/>
+                                        </then>
+                                        <else>
+                                            <if expression="umurC&gt;=25">
+                                                <then>
+                                                    <assign variable="diskonC" expression="HargaTiket*0.1"/>
+                                                </then>
+                                                <else/>
+                                            </if>
+                                        </else>
+                                    </if>
+                                </else>
+                            </if>
+                            <assign variable="TotalDiskon" expression="diskonA + diskonB+ diskonC"/>
+                            <assign variable="TotalPromo" expression="TotalHarga-TotalDiskon"/>
+                            <output expression="&quot; Kalian dapat diskon senilai &quot; &amp; TotalDiskon &amp; &quot; Sehingga kalian mendapat harga promo senilai &quot; &amp; TotalPromo" newline="True"/>
+                        </else>
+                    </if>
+                </then>
+                <else>
+                    <output expression="&quot;anda membayar tiket sebesar&quot; &amp; TotalHarga" newline="True"/>
+                </else>
+            </if>
+        </body>
+    </function>
+</flowgorithm>
